@@ -1,7 +1,4 @@
-package com.example.eatify
-
-import android.content.pm.ApplicationInfo
-import android.content.pm.PackageManager
+package com.example.spoonify
 
 class Constants {
 

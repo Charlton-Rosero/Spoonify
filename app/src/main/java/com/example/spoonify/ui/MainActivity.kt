@@ -1,20 +1,14 @@
-package com.example.eatify.ui
+package com.example.spoonify.ui
 
-import android.content.pm.ApplicationInfo
-import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.eatify.BuildConfig
-import com.example.eatify.R
-import com.example.eatify.databinding.ActivityMainBinding
+import com.example.spoonify.R
+import com.example.spoonify.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

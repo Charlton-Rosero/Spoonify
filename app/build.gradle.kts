@@ -9,11 +9,11 @@ plugins {
 
 
 android {
-    namespace = "com.example.eatify"
+    namespace = "com.example.spoonify"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.eatify"
+        applicationId = "com.example.spoonify"
         minSdk = 24
         targetSdk = 33
         versionCode = 1

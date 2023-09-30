@@ -1,12 +1,12 @@
-package com.example.eatify.ui.fragments.recipes
+package com.example.spoonify.ui.fragments.recipes
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.eatify.R
-import com.example.eatify.databinding.FragmentRecipesBinding
+import com.example.spoonify.R
+import com.example.spoonify.databinding.FragmentRecipesBinding
 
 class RecipesFragment : Fragment() {
     private var _binding: FragmentRecipesBinding? = null

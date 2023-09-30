@@ -1,4 +1,4 @@
-package com.example.eatify.models
+package com.example.spoonify.models
 
 
 import com.google.gson.annotations.SerializedName
