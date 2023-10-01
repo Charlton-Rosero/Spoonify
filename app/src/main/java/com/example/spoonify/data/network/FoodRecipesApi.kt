@@ -1,4 +1,4 @@
-package com.example.spoonify
+package com.example.spoonify.data.network
 
 import com.example.spoonify.models.FoodRecipe
 import retrofit2.Response

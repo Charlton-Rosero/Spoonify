@@ -1,4 +1,6 @@
-package com.example.spoonify
+package com.example.spoonify.util
+
+import com.example.spoonify.BuildConfig
 
 class Constants {
 
