@@ -1,4 +1,4 @@
-package com.example.eatify
+package com.example.spoonify
 
 import org.junit.Test
 

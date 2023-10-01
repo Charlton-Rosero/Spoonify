@@ -1,27 +1,33 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
+    id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
     id("androidx.navigation.safeargs")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
+
 android {
-    namespace = "com.example.eatify"
+    namespace = "com.example.spoonify"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.eatify"
+        applicationId = "com.example.spoonify"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("string","API_KEY","")
     }
+
     buildFeatures {
         dataBinding = true
         viewBinding = true
+        buildConfig = true
     }
 
     buildTypes {
