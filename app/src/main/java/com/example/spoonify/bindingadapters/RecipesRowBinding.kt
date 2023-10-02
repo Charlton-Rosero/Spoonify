@@ -1,7 +1,6 @@
 package com.example.spoonify.bindingadapters
 
 import android.view.View
-import android.widget.CheckedTextView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -12,15 +11,13 @@ import com.example.spoonify.R
 class RecipesRowBinding {
     companion object{
 
-        @BindingAdapter("setNumberOfLikes")
-        @JvmStatic
+        @BindingAdapter("numberOfLikes")
         fun setNumberOfLikes(textView: TextView, likes: Int){
             textView.text = likes.toString()
 
         }
 
         @BindingAdapter("loadImage")
-        @JvmStatic
         fun loadImage(imageView: ImageView, imageUrl: String){
             imageView.load(imageUrl){
                 crossfade(600)
@@ -28,14 +25,12 @@ class RecipesRowBinding {
         }
 
         @BindingAdapter("setPrepTime")
-        @JvmStatic
         fun setPrepTime(textView: TextView, minutes: Int){
             textView.text = minutes.toString()
 
         }
 
         @BindingAdapter("isVegan")
-        @JvmStatic
         fun isVegan(view: View, vegan: Boolean){
             if(vegan){
                 when(view){

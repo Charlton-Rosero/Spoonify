@@ -9,7 +9,7 @@ import com.example.spoonify.models.FoodRecipe
 import com.example.spoonify.models.Result
 import com.example.spoonify.util.RecipesDiffUtil
 
-class RecipesAdapters: RecyclerView.Adapter<RecipesAdapters.MyViewHolder>() {
+class RecipesAdapter: RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
 
     private var recipes = emptyList<Result>()
 
