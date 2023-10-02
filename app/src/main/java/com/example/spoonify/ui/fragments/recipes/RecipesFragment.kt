@@ -9,17 +9,23 @@ import com.example.spoonify.R
 import com.example.spoonify.databinding.FragmentRecipesBinding
 
 class RecipesFragment : Fragment() {
-    private var _binding: FragmentRecipesBinding? = null
 
+
+    private lateinit var recipesView: View
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_recipes, container, false)
-        return view
+        recipesView = inflater.inflate(R.layout.fragment_recipes, container, false)
+
+
+
+        return recipesView
     }
+    private fun showShimmerEffect() {
+        recipesView.recyclerview.showShimmer()
+    }
+
 }
