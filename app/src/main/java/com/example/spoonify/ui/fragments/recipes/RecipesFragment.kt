@@ -29,57 +29,57 @@ class RecipesFragment : Fragment() {
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
         return recipesView
 
-        setupRecyclerView()
+//        setupRecyclerView()
 
     }
-    private fun requestApiData() {
-        mainViewModel.getRecipes(applyQueries())
-        mainViewModel.recipesResponse.observe(viewLifecycleOwner,{ response ->
-            when(response){
-                is NetworkResult.Success -> {
-                    hideShimmerEffect()
-                    response.data?.let { mAdapter.setData(it) }
-                }
-                is NetworkResult.Error -> {
-                    hideShimmerEffect()
-                    Toast.makeText(
-                        requireContext(),
-                        response.message.toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                is NetworkResult.Loading ->{
-                    showShimmerEffect()
-                }
-            }
-        })
-    }
-
-    private fun applyQueries(): Map<String, String> {
-        val queries: HashMap<String, String> = HashMap()
-
-        queries["number"]="50"
-        queries["apiKey"]="b4d820841ab045029449379781b3d1a5"
-        queries["type"]="snack"
-        queries["diet"]="vegan"
-        queries["addRecipeInformation"]="true"
-        queries["fillIngredients"]="true"
-
-        return queries
-    }
-
-    private fun setupRecyclerView() {
-        recipesView.recyclerview.adapter = mAdapter
-        recipesView.recyclerview.layoutManager = LinearLayoutManager(requireContext())
-        showShimmerEffect()
-    }
-
-    private fun showShimmerEffect() {
-        recipesView.recyclerview.showShimmer()
-    }
-
-    private fun hideShimmerEffect() {
-        recipesView.recyclerview.hideShimmer()
-    }
+//    private fun requestApiData() {
+//        mainViewModel.getRecipes(applyQueries())
+//        mainViewModel.recipesResponse.observe(viewLifecycleOwner,{ response ->
+//            when(response){
+//                is NetworkResult.Success -> {
+//                    hideShimmerEffect()
+//                    response.data?.let { mAdapter.setData(it) }
+//                }
+//                is NetworkResult.Error -> {
+//                    hideShimmerEffect()
+//                    Toast.makeText(
+//                        requireContext(),
+//                        response.message.toString(),
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//                is NetworkResult.Loading ->{
+//                    showShimmerEffect()
+//                }
+//            }
+//        })
+//    }
+//
+//    private fun applyQueries(): Map<String, String> {
+//        val queries: HashMap<String, String> = HashMap()
+//
+//        queries["number"]="50"
+//        queries["apiKey"]="b4d820841ab045029449379781b3d1a5"
+//        queries["type"]="snack"
+//        queries["diet"]="vegan"
+//        queries["addRecipeInformation"]="true"
+//        queries["fillIngredients"]="true"
+//
+//        return queries
+//    }
+//
+//    private fun setupRecyclerView() {
+//        recipesView.recyclerview.adapter = mAdapter
+//        recipesView.recyclerview.layoutManager = LinearLayoutManager(requireContext())
+//        showShimmerEffect()
+//    }
+//
+//    private fun showShimmerEffect() {
+//        recipesView.recyclerview.showShimmer()
+//    }
+//
+//    private fun hideShimmerEffect() {
+//        recipesView.recyclerview.hideShimmer()
+//    }
 
 }

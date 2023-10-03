@@ -25,7 +25,6 @@ class RecipesRowBinding {
                 crossfade(600)
             }
         }
-
         @JvmStatic
         @BindingAdapter("setPrepTime")
         fun setPrepTime(textView: TextView, minutes: Int){
