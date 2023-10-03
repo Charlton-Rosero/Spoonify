@@ -1,4 +1,4 @@
-package com.example.spoonify
+package com.example.spoonify.viewmodel
 
 import android.app.Application
 import android.content.Context
