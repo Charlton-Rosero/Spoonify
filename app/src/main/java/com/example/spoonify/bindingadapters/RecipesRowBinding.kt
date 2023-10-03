@@ -11,12 +11,14 @@ import com.example.spoonify.R
 class RecipesRowBinding {
     companion object{
 
+        @JvmStatic
         @BindingAdapter("numberOfLikes")
         fun setNumberOfLikes(textView: TextView, likes: Int){
             textView.text = likes.toString()
 
         }
 
+        @JvmStatic
         @BindingAdapter("loadImage")
         fun loadImage(imageView: ImageView, imageUrl: String){
             imageView.load(imageUrl){
@@ -24,12 +26,14 @@ class RecipesRowBinding {
             }
         }
 
+        @JvmStatic
         @BindingAdapter("setPrepTime")
         fun setPrepTime(textView: TextView, minutes: Int){
             textView.text = minutes.toString()
 
         }
 
+        @JvmStatic
         @BindingAdapter("isVegan")
         fun isVegan(view: View, vegan: Boolean){
             if(vegan){
