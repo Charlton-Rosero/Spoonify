@@ -15,7 +15,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 @HiltViewModel
 class RecipesViewModel (application: Application) : AndroidViewModel(application){
 
-    private fun applyQueries(): Map<String, String> {
+    fun applyQueries(): Map<String, String> {
         val queries: HashMap<String, String> = HashMap()
 
         queries[QUERY_NUMBER]="50"
