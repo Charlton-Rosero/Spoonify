@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.spoonify.viewmodel.MainViewModel
 import com.example.spoonify.R
 import com.example.spoonify.adapters.RecipesAdapter
 import com.example.spoonify.util.NetworkResult
 import com.example.spoonify.viewmodel.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
@@ -36,8 +38,32 @@ class RecipesFragment : Fragment() {
         // Inflate the layout for this fragment
         recipesView = inflater.inflate(R.layout.fragment_recipes, container, false)
         setupRecyclerView()
-        requestApiData()
+        readDatabase()
         return recipesView
+    }
+
+    private fun readDatabase() {
+        lifecycleScope.launch {
+            mainViewModel.readRecipes.observe(viewLifecycleOwner, { database ->
+                if(database.isNotEmpty()){
+                    mAdapter.setData(database[0].foodRecipe)
+                    hideShimmerEffect()
+                }else{
+                    requestApiData()
+                }
+            })
+        }
+    }
+
+
+    private fun loadDataFromCache(){
+        lifecycleScope.launch {
+            mainViewModel.readRecipes.observe(viewLifecycleOwner,{ database ->
+                if(database.isNotEmpty()){
+                    mAdapter.setData(database[0].foodRecipe)
+                }
+            })
+        }
     }
 
 
@@ -51,6 +77,7 @@ class RecipesFragment : Fragment() {
                 }
                 is NetworkResult.Error -> {
                     hideShimmerEffect()
+                    loadDataFromCache()
                     Toast.makeText(
                         requireContext(),
                         response.message.toString(),
