@@ -1,4 +1,4 @@
-package com.example.spoonify
+package com.example.spoonify.data.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

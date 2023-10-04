@@ -1,4 +1,4 @@
-package com.example.spoonify
+package com.example.spoonify.data.database
 
 import androidx.room.TypeConverter
 import com.example.spoonify.models.FoodRecipe
