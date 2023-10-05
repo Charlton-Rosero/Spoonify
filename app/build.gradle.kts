@@ -4,7 +4,10 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("androidx.navigation.safeargs")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    kotlin("kapt")
     id("kotlin-kapt")
+    id("com.google.devtools.ksp")
+
 }
 
 
@@ -68,10 +71,10 @@ dependencies {
     implementation ("androidx.navigation:navigation-ui-ktx:2.5.3")
 
     // Room components
-    implementation ("androidx.room:room-runtime:2.5.1")
-    kapt ("androidx.room:room-compiler:2.5.1")
-    implementation ("androidx.room:room-ktx:2.5.1")
-    androidTestImplementation ("androidx.room:room-testing:2.5.1")
+    implementation ("androidx.room:room-runtime:2.5.2")
+    ksp ("androidx.room:room-compiler:2.5.2")
+    implementation ("androidx.room:room-ktx:2.5.2")
+    androidTestImplementation ("androidx.room:room-testing:2.5.2")
 
     // Data binding
 //    kapt ("com.android.databinding:compiler:3.2.0-alpha10")
@@ -88,8 +91,9 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
     //Dagger - Hilt
-    implementation ("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-compiler:2.48")
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-android-compiler:2.44.2")
+
 
 
     // Coroutines
