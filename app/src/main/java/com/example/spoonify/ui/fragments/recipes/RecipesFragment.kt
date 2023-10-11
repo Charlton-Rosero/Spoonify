@@ -1,6 +1,7 @@
 package com.example.spoonify.ui.fragments.recipes
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.example.spoonify.R
 import com.example.spoonify.adapters.RecipesAdapter
 import com.example.spoonify.databinding.FragmentRecipesBinding
 import com.example.spoonify.util.NetworkResult
+import com.example.spoonify.util.observeOnce
 import com.example.spoonify.viewmodel.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -49,37 +51,38 @@ class RecipesFragment : Fragment() {
 
     private fun readDatabase() {
         lifecycleScope.launch {
-            mainViewModel.readRecipes.observe(viewLifecycleOwner, { database ->
-                if(database.isNotEmpty()){
+            mainViewModel.readRecipes.observeOnce(viewLifecycleOwner) { database ->
+                if (database.isNotEmpty()) {
                     mAdapter.setData(database[0].foodRecipe)
                     hideShimmerEffect()
-                }else{
+                } else {
                     requestApiData()
                 }
-            })
+            }
         }
     }
 
 
     private fun loadDataFromCache(){
         lifecycleScope.launch {
-            mainViewModel.readRecipes.observe(viewLifecycleOwner,{ database ->
-                if(database.isNotEmpty()){
+            mainViewModel.readRecipes.observe(viewLifecycleOwner) { database ->
+                if (database.isNotEmpty()) {
                     mAdapter.setData(database[0].foodRecipe)
                 }
-            })
+            }
         }
     }
 
 
     private fun requestApiData() {
         mainViewModel.getRecipes(recipesViewModel.applyQueries())
-        mainViewModel.recipesResponse.observe(viewLifecycleOwner, { response ->
-            when(response){
+        mainViewModel.recipesResponse.observe(viewLifecycleOwner) { response ->
+            when (response) {
                 is NetworkResult.Success -> {
                     hideShimmerEffect()
                     response.data?.let { mAdapter.setData(it) }
                 }
+
                 is NetworkResult.Error -> {
                     hideShimmerEffect()
                     loadDataFromCache()
@@ -89,11 +92,12 @@ class RecipesFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                is NetworkResult.Loading ->{
+
+                is NetworkResult.Loading -> {
                     showShimmerEffect()
                 }
             }
-        })
+        }
     }
 
     private fun setupRecyclerView() {
@@ -101,12 +105,12 @@ class RecipesFragment : Fragment() {
         binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
         showShimmerEffect()
     }
+
     private fun showShimmerEffect() {
         binding.shimmerFrameLayout.startShimmer()
         binding.shimmerFrameLayout.visibility = View.VISIBLE
         binding.recyclerview.visibility = View.GONE
     }
-
 
     private fun hideShimmerEffect() {
         binding.shimmerFrameLayout.stopShimmer()
