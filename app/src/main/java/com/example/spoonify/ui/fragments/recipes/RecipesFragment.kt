@@ -10,13 +10,13 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.spoonify.viewmodel.MainViewModel
+import com.example.spoonify.viewmodels.MainViewModel
 import com.example.spoonify.R
 import com.example.spoonify.adapters.RecipesAdapter
 import com.example.spoonify.databinding.FragmentRecipesBinding
 import com.example.spoonify.util.NetworkResult
 import com.example.spoonify.util.observeOnce
-import com.example.spoonify.viewmodel.RecipesViewModel
+import com.example.spoonify.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -27,7 +27,6 @@ class RecipesFragment : Fragment() {
     private var _binding: FragmentRecipesBinding? = null
     private val binding get() = _binding!!
     private val mAdapter by lazy { RecipesAdapter() }
-    private lateinit var recipesView: View
     private lateinit var recipesViewModel: RecipesViewModel
     private lateinit var mainViewModel: MainViewModel
 
@@ -43,10 +42,12 @@ class RecipesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        recipesView = inflater.inflate(R.layout.fragment_recipes, container, false)
+        _binding = FragmentRecipesBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.mainViewModel = mainViewModel
         setupRecyclerView()
         readDatabase()
-        return recipesView
+        return binding.root
     }
 
     private fun readDatabase() {
@@ -75,6 +76,7 @@ class RecipesFragment : Fragment() {
 
 
     private fun requestApiData() {
+        Log.d("APIDATA", "Requested API data")
         mainViewModel.getRecipes(recipesViewModel.applyQueries())
         mainViewModel.recipesResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
@@ -116,6 +118,11 @@ class RecipesFragment : Fragment() {
         binding.shimmerFrameLayout.stopShimmer()
         binding.shimmerFrameLayout.visibility = View.GONE
         binding.recyclerview.visibility = View.VISIBLE
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }

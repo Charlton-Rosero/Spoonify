@@ -1,4 +1,4 @@
-package com.example.spoonify.viewmodel
+package com.example.spoonify.viewmodels
 
 import android.app.Application
 import android.content.Context
@@ -36,11 +36,6 @@ class MainViewModel @Inject constructor(
     }
 
 
-
-
-
-
-
     var recipesResponse: MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()
 
     fun getRecipes(queries: Map<String, String>) = viewModelScope.launch {
@@ -55,11 +50,9 @@ class MainViewModel @Inject constructor(
                 recipesResponse.value = handleFoodRecipesResponse(response)
 
                 val foodRecipe = recipesResponse.value!!.data
-                    if (foodRecipe != null){
-                        offlineCacheRecipes(foodRecipe)
-                    }
-
-
+                if(foodRecipe != null) {
+                    offlineCacheRecipes(foodRecipe)
+                }
             } catch (e: Exception) {
                 recipesResponse.value = NetworkResult.Error("Recipes not found.")
             }

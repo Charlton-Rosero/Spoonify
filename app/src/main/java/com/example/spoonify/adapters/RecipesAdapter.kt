@@ -9,26 +9,26 @@ import com.example.spoonify.models.FoodRecipe
 import com.example.spoonify.models.Result
 import com.example.spoonify.util.RecipesDiffUtil
 
-class RecipesAdapter: RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
+class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
 
     private var recipes = emptyList<Result>()
 
-    class MyViewHolder(
-        private val binding: RecipesRowLayoutBinding
-    ): RecyclerView.ViewHolder(binding.root) {
+    class MyViewHolder(private val binding: RecipesRowLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(result: Result){
             binding.result = result
             binding.executePendingBindings()
         }
 
-        companion object{
-            fun from(parent: ViewGroup): MyViewHolder{
+        companion object {
+            fun from(parent: ViewGroup): MyViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = RecipesRowLayoutBinding.inflate(layoutInflater, parent, false)
                 return MyViewHolder(binding)
             }
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -36,7 +36,7 @@ class RecipesAdapter: RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-       val currentRecipe = recipes[position]
+        val currentRecipe = recipes[position]
         holder.bind(currentRecipe)
     }
 
@@ -45,10 +45,10 @@ class RecipesAdapter: RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
     }
 
     fun setData(newData: FoodRecipe){
-        val recipesDiffUtil = RecipesDiffUtil(recipes, newData.results)
+        val recipesDiffUtil =
+            RecipesDiffUtil(recipes, newData.results)
         val diffUtilResult = DiffUtil.calculateDiff(recipesDiffUtil)
         recipes = newData.results
         diffUtilResult.dispatchUpdatesTo(this)
-
     }
 }
