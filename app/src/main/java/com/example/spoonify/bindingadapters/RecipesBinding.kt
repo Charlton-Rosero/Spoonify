@@ -38,7 +38,6 @@ class RecipesBinding {
         ) {
             if (apiResponse is NetworkResult.Error && database.isNullOrEmpty()) {
                 textView.visibility = View.VISIBLE
-                textView.text = apiResponse.message.toString()
             } else if (apiResponse is NetworkResult.Loading) {
                 textView.visibility = View.INVISIBLE
             } else if (apiResponse is NetworkResult.Success) {
