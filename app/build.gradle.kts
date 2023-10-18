@@ -85,7 +85,7 @@ dependencies {
     implementation ("androidx.datastore:datastore-preferences:1.0.0")
 
     // Recyclerview
-    implementation ("androidx.recyclerview:recyclerview:1.3.0")
+    implementation ("androidx.recyclerview:recyclerview:1.3.1")
 
     // Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
