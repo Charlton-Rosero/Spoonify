@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spoonify.viewmodels.MainViewModel
 import com.example.spoonify.R
@@ -47,6 +48,12 @@ class RecipesFragment : Fragment() {
         binding.mainViewModel = mainViewModel
         setupRecyclerView()
         readDatabase()
+
+        binding.fabRecipes.setOnClickListener {
+            findNavController().navigate(R.id.action_recipesFragment_to_recipesButton)
+        }
+
+
         return binding.root
     }
 

@@ -9,10 +9,23 @@
         android:id="@+id/recipesFragment"
         android:name="com.example.spoonify.ui.fragments.recipes.RecipesFragment"
         android:label="Recipes"
-        tools:layout="@layout/fragment_recipes" />
+        tools:layout="@layout/fragment_recipes" >
+        <action
+            android:id="@+id/action_recipesFragment_to_recipesButton"
+            app:destination="@id/recipesButton" />
+    </fragment>
     <fragment
         android:id="@+id/favouriteRecipesFragment"
         android:name="com.example.spoonify.ui.fragments.favourites.FavouriteRecipesFragment"
         android:label="Favourites"
         tools:layout="@layout/fragment_favourite_recipes" />
+    <dialog
+        android:id="@+id/recipesButton"
+        android:name="com.example.spoonify.ui.fragments.recipes.RecipesButton"
+        android:label="recipes_button"
+        tools:layout="@layout/recipes_button" >
+        <action
+            android:id="@+id/action_recipesButton_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
+    </dialog>
 </navigation>
