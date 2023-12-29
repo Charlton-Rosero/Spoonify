@@ -16,7 +16,9 @@ class RecipesBottomSheet : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.recipes_bottom_sheet, container, false)
+        val mView = inflater.inflate(R.layout.recipes_bottom_sheet, container, false)
+
+        return  mView
     }
 
 }
