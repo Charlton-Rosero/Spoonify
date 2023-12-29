@@ -50,7 +50,7 @@ class RecipesFragment : Fragment() {
         readDatabase()
 
         binding.fabRecipes.setOnClickListener {
-            findNavController().navigate(R.id.action_recipesFragment_to_recipesButton)
+            findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
         }
 
 
