@@ -8,7 +8,7 @@ import com.example.spoonify.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-class RecipesButton : BottomSheetDialogFragment() {
+class RecipesBottomSheet : BottomSheetDialogFragment() {
 
 
     override fun onCreateView(

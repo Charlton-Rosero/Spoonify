@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_favourite_recipes" />
     <dialog
         android:id="@+id/recipesBottomSheet"
-        android:name="com.example.spoonify.ui.fragments.recipes.RecipesButton"
+        android:name="com.example.spoonify.ui.fragments.recipes.RecipesBottomSheet"
         android:label="recipes_bottom_sheet"
         tools:layout="@layout/recipes_bottom_sheet" >
         <action
