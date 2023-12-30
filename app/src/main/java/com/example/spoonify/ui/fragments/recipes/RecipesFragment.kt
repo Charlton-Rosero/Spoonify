@@ -21,6 +21,7 @@ import com.example.spoonify.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
 

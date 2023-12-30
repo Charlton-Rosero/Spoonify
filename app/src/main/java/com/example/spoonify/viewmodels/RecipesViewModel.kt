@@ -31,7 +31,7 @@ class RecipesViewModel @Inject constructor(
     private var mealType = DEFAULT_MEAL_TYPE
     private var dietType = DEFAULT_DIET_TYPE
 
-    val readMEalAndDietType = dataStoreRepository.readMealAndDietType
+    val readMealAndDietType = dataStoreRepository.readMealAndDietType
 
     fun saveMealAndDietType(mealType: String, mealTypeId: Int, dietType: String, dietTypeId: Int ) =
         viewModelScope.launch(Dispatchers.IO){
@@ -42,7 +42,7 @@ class RecipesViewModel @Inject constructor(
         val queries: HashMap<String, String> = HashMap()
 
         viewModelScope.launch {
-            readMEalAndDietType.collect{ value ->
+            readMealAndDietType.collect{ value ->
                 mealType = value.selectedMealType
                 dietType = value.selectedDietType
             }

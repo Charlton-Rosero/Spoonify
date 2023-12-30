@@ -8,11 +8,15 @@
     <fragment
         android:id="@+id/recipesFragment"
         android:name="com.example.spoonify.ui.fragments.recipes.RecipesFragment"
-        android:label="Recipes"
-        tools:layout="@layout/fragment_recipes" >
+        android:label="Recipes">
         <action
             android:id="@+id/action_recipesFragment_to_recipesBottomSheet"
             app:destination="@id/recipesBottomSheet" />
+        <argument
+            android:name="bottomSheet"
+            app:argType="boolean"
+            android:defaultValue="false" />
+
     </fragment>
     <fragment
         android:id="@+id/favouriteRecipesFragment"

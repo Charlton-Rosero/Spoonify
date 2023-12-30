@@ -4,9 +4,9 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("androidx.navigation.safeargs")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id("com.google.devtools.ksp")
     kotlin("kapt")
     id("kotlin-kapt")
-    id("com.google.devtools.ksp")
 
 }
 
@@ -14,6 +14,7 @@ plugins {
 android {
     namespace = "com.example.spoonify"
     compileSdk = 33
+
 
     defaultConfig {
         applicationId = "com.example.spoonify"
@@ -77,9 +78,8 @@ dependencies {
     implementation ("androidx.room:room-ktx:2.5.2")
     androidTestImplementation ("androidx.room:room-testing:2.5.2")
 
-    // Data binding
-//    kapt ("com.android.databinding:compiler:3.2.0-alpha10")
-//    kapt ("androidx.databinding:databinding-common:4.1.0")
+    ksp ("com.android.databinding:compiler:3.2.0-alpha10")
+    ksp ("androidx.databinding:databinding-common:4.1.0")
 
     // DataStore
     implementation ("androidx.datastore:datastore-preferences:1.0.0")
