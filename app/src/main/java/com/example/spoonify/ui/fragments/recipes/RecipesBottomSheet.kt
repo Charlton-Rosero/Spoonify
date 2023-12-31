@@ -64,6 +64,7 @@ class RecipesBottomSheet : BottomSheetDialogFragment() {
             dietTypeChipId = checkedId.first()
         }
 
+        //Only works when "Apply" button is clicked
         binding.buttonApply.setOnClickListener{
             recipesViewModel.saveMealAndDietType(
                 mealTypeChip,
