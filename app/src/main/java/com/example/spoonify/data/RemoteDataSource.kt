@@ -2,6 +2,7 @@ package com.example.spoonify.data
 
 import com.example.spoonify.data.network.FoodRecipesApi
 import com.example.spoonify.models.FoodRecipe
+import okhttp3.ResponseBody
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -11,6 +12,10 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun getRecipes(queries: Map<String, String>): Response<FoodRecipe> {
         return foodRecipesApi.getRecipes(queries)
+    }
+
+    suspend fun searchRecipes(searchQuery: Map<String, String>): Response<FoodRecipe>{
+        return  foodRecipesApi.searchRecipes(searchQuery)
     }
 
 }
