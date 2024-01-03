@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.example.spoonify.R
 import com.example.spoonify.databinding.FragmentOverviewBinding
 import com.example.spoonify.models.Result
+import org.jsoup.Jsoup
 
 
 class OverviewFragment : Fragment() {

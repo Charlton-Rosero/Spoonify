@@ -12,6 +12,7 @@ import coil.load
 import com.example.spoonify.R
 import com.example.spoonify.models.Result
 import com.example.spoonify.ui.fragments.recipes.RecipesFragmentDirections
+import org.jsoup.Jsoup
 
 class RecipesRowBinding {
     companion object{
@@ -76,6 +77,14 @@ class RecipesRowBinding {
                         )
                     }
                 }
+            }
+        }
+        @JvmStatic
+        @BindingAdapter("parseHtml")
+        fun parseHtml(textView: TextView, description:String?){
+            if (description != null){
+                val desc = Jsoup.parse(description).text()
+                textView.text = desc
             }
         }
     }
