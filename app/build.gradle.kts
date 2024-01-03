@@ -7,7 +7,7 @@ plugins {
     id("com.google.devtools.ksp")
     kotlin("kapt")
     id("kotlin-kapt")
-
+    id("kotlin-parcelize")
 }
 
 
