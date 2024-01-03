@@ -12,6 +12,7 @@ import coil.load
 import com.example.spoonify.R
 import com.example.spoonify.models.Result
 import com.example.spoonify.ui.fragments.recipes.RecipesFragmentDirections
+import org.jsoup.Jsoup
 
 class RecipesRowBinding {
     companion object{
@@ -31,14 +32,6 @@ class RecipesRowBinding {
             }
         }
 
-
-        @JvmStatic
-        @BindingAdapter("numberOfLikes")
-        fun setNumberOfLikes(textView: TextView, likes: Int){
-            textView.text = likes.toString()
-
-        }
-
         @JvmStatic
         @BindingAdapter("loadImage")
         fun loadImage(imageView: ImageView, imageUrl: String){
@@ -47,19 +40,13 @@ class RecipesRowBinding {
                 error(R.drawable.ic_error_placeholder)
             }
         }
-        @JvmStatic
-        @BindingAdapter("setPrepTime")
-        fun setPrepTime(textView: TextView, minutes: Int){
-            textView.text = minutes.toString()
-
-        }
 
         @JvmStatic
         @BindingAdapter("isVegan")
         fun isVegan(view: View, vegan: Boolean){
-            if(vegan){
-                when(view){
-                    is TextView ->{
+            if (vegan) {
+                when (view) {
+                    is TextView -> {
                         view.setTextColor(
                             ContextCompat.getColor(
                                 view.context,
@@ -67,7 +54,7 @@ class RecipesRowBinding {
                             )
                         )
                     }
-                    is ImageView ->{
+                    is ImageView -> {
                         view.setColorFilter(
                             ContextCompat.getColor(
                                 view.context,
@@ -76,6 +63,14 @@ class RecipesRowBinding {
                         )
                     }
                 }
+            }
+        }
+        @JvmStatic
+        @BindingAdapter("parseHtml")
+        fun parseHtml(textView: TextView, description:String?){
+            if (description != null){
+                val desc = Jsoup.parse(description).text()
+                textView.text = desc
             }
         }
     }
