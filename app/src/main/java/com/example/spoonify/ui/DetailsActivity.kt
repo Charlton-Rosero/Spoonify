@@ -12,7 +12,10 @@ import com.example.spoonify.databinding.ActivityDetailsBinding
 import com.example.spoonify.ui.fragments.ingredients.IngredientsFragment
 import com.example.spoonify.ui.fragments.instructions.InstructionsFragment
 import com.example.spoonify.ui.fragments.overview.OverviewFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class DetailsActivity : AppCompatActivity() {
 
     private val args by navArgs<DetailsActivityArgs>()

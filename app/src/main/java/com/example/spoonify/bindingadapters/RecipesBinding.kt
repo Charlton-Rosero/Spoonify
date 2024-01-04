@@ -5,8 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
-import com.airbnb.lottie.LottieAnimationView
-import com.example.spoonify.data.database.RecipesEntity
+import com.example.spoonify.data.database.entities.RecipesEntity
 import com.example.spoonify.models.FoodRecipe
 import com.example.spoonify.util.NetworkResult
 
