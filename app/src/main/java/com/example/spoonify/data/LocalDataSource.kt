@@ -1,7 +1,7 @@
 package com.example.spoonify.data
 
 import com.example.spoonify.data.database.RecipesDao
-import com.example.spoonify.data.database.RecipesEntity
+import com.example.spoonify.data.database.entities.RecipesEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
