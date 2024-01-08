@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.spoonify.data.Repository
+import com.example.spoonify.data.database.entities.FavouritesEntity
 import com.example.spoonify.data.database.entities.RecipesEntity
 import com.example.spoonify.models.FoodRecipe
 import com.example.spoonify.util.NetworkResult
@@ -26,11 +27,28 @@ class MainViewModel @Inject constructor(
     application: Application
 ) : AndroidViewModel(application) {
 
-    val readRecipes: LiveData<List<RecipesEntity>> = repository.local.readDatabase().asLiveData()
+    val readRecipes: LiveData<List<RecipesEntity>> = repository.local.readRecipes().asLiveData()
+    val readFavouriteRecipes: LiveData<List<FavouritesEntity>> = repository.local.readFavouriteRecipes().asLiveData()
+
 
     private fun insertRecipes(recipesEntity: RecipesEntity) = viewModelScope.launch(Dispatchers.IO) {
         repository.local.insertRecipes(recipesEntity)
     }
+
+    private fun insertFavouriteRecipe(favouritesEntity: FavouritesEntity) =
+        viewModelScope.launch (Dispatchers.IO){
+            repository.local.insertFavouriteRecipes(favouritesEntity)
+        }
+
+    private fun deleteFavouriteRecipe(favouritesEntity: FavouritesEntity) =
+        viewModelScope.launch (Dispatchers.IO){
+            repository.local.deleteFavouriteRecipe(favouritesEntity)
+        }
+
+    private fun deleteAllFavourite() =
+        viewModelScope.launch (Dispatchers.IO){
+            repository.local.deleteAllFavouriteRecipes()
+        }
 
     var recipesResponse: MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()
     var searchRecipesResponse: MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()
