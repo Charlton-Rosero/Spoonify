@@ -30,4 +30,5 @@
     <string name="healthy">Healthy</string>
     <string name="cheap">Cheap</string>
     <string name="save_to_favourites">Save To Favourites</string>
+    <string name="no_favourites">No Favourites</string>
 </resources>
