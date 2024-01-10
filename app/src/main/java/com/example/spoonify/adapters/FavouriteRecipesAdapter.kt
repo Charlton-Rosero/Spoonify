@@ -59,11 +59,7 @@ class FavouriteRecipesAdapter(
 
         val currentRecipe = favouriteRecipes[position]
         holder.bind(currentRecipe)
-
         saveItemStateOnScroll(currentRecipe, holder)
-
-
-
         holder.binding.favouriteRecipesRowLayout.setOnLongClickListener {
             if (!multiSelection) {
                 multiSelection = true
@@ -74,9 +70,7 @@ class FavouriteRecipesAdapter(
                 applySelection(holder, currentRecipe)
                 true
             }
-
         }
-
     }
 
     private fun saveItemStateOnScroll(currentRecipe: FavouritesEntity, holder: MyViewHolder){
