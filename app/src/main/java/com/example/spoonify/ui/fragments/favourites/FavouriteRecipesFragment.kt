@@ -44,15 +44,22 @@ class FavouriteRecipesFragment : Fragment() {
         binding.mAdapter = mAdapter
 
         setupRecyclerView(binding.favoriteRecipesRecyclerView)
+
+        mainViewModel.readFavouriteRecipes.observe(viewLifecycleOwner) { favoritesEntity ->
+            mAdapter.setData(favoritesEntity)
+        }
         return binding.root
 
     }
 
-
-
     private fun setupRecyclerView(recyclerView: RecyclerView) {
         recyclerView.adapter = mAdapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 
