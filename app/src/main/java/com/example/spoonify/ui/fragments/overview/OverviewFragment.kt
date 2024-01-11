@@ -18,6 +18,8 @@ import com.example.spoonify.util.Constants.Companion.RECIPE_RESULT_KEY
 
 class OverviewFragment : Fragment() {
 
+
+
     private var _binding: FragmentOverviewBinding? = null
     private val binding get() = _binding!!
 
