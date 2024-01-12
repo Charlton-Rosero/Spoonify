@@ -8,11 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spoonify.R
 import com.example.spoonify.data.database.entities.FavouritesEntity
 import com.example.spoonify.databinding.FavouriteRecipesRowLayoutBinding
+import com.example.spoonify.ui.fragments.favourites.FavouriteRecipesFragmentDirections
 import com.example.spoonify.util.RecipesDiffUtil
 import com.example.spoonify.viewmodels.MainViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -60,6 +62,21 @@ class FavouriteRecipesAdapter(
         val currentRecipe = favouriteRecipes[position]
         holder.bind(currentRecipe)
         saveItemStateOnScroll(currentRecipe, holder)
+
+        //click to details fragment
+        holder.binding.favouriteRecipesRowLayout.setOnClickListener {
+            if (multiSelection) {
+                applySelection(holder, currentRecipe)
+            } else {
+                val action =
+                    FavouriteRecipesFragmentDirections.actionFavouriteRecipesFragmentToDetailsActivity(
+                        currentRecipe.result
+                    )
+                holder.itemView.findNavController().navigate(action)
+            }
+        }
+
+        //Long click
         holder.binding.favouriteRecipesRowLayout.setOnLongClickListener {
             if (!multiSelection) {
                 multiSelection = true
@@ -70,7 +87,10 @@ class FavouriteRecipesAdapter(
                 applySelection(holder, currentRecipe)
                 true
             }
+
         }
+
+
     }
 
     private fun saveItemStateOnScroll(currentRecipe: FavouritesEntity, holder: MyViewHolder){
@@ -136,7 +156,7 @@ class FavouriteRecipesAdapter(
             selectedRecipes.forEach {
                 mainViewModel.deleteFavouriteRecipe(it)
             }
-            showSnackBar("${selectedRecipes.size} Recipe/s removed.")
+            showSnackBar("${selectedRecipes.size} Recipe(s) removed.")
 
             multiSelection = false
             selectedRecipes.clear()
