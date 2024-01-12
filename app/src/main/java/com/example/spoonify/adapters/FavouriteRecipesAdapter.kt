@@ -156,7 +156,7 @@ class FavouriteRecipesAdapter(
             selectedRecipes.forEach {
                 mainViewModel.deleteFavouriteRecipe(it)
             }
-            showSnackBar("${selectedRecipes.size} Recipe/s removed.")
+            showSnackBar("${selectedRecipes.size} Recipe(s) removed.")
 
             multiSelection = false
             selectedRecipes.clear()
