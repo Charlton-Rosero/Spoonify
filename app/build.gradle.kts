@@ -119,7 +119,7 @@ dependencies {
 
     // Jsoup
     implementation ("org.jsoup:jsoup:1.13.1")
-
+    implementation ("androidx.core:core-splashscreen:1.0.0-beta01")
     //Lottie
     implementation ("com.airbnb.android:lottie:$lottieVersion")
 }

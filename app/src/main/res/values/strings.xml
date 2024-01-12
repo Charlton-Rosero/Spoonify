@@ -32,4 +32,6 @@
     <string name="save_to_favourites">Save To Favourites</string>
     <string name="no_favourites">No Favourites</string>
     <string name="delete_favourite_menu">delete_favourite_menu</string>
+    <string name="delete_all">delete all</string>
+    <string name="spoonify">Spoonify</string>
 </resources>

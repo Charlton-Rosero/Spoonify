@@ -17,6 +17,7 @@ import com.example.spoonify.R
 import com.example.spoonify.adapters.FavouriteRecipesAdapter
 import com.example.spoonify.databinding.FragmentFavouriteRecipesBinding
 import com.example.spoonify.viewmodels.MainViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -43,6 +44,7 @@ class FavouriteRecipesFragment : Fragment() {
         binding.mainViewModel = mainViewModel
         binding.mAdapter = mAdapter
 
+        setHasOptionsMenu(true)
         setupRecyclerView(binding.favoriteRecipesRecyclerView)
 
         mainViewModel.readFavouriteRecipes.observe(viewLifecycleOwner) { favoritesEntity ->
@@ -50,6 +52,28 @@ class FavouriteRecipesFragment : Fragment() {
         }
         return binding.root
 
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.deleteAll_favourite_recipes_menu) {
+            mainViewModel.deleteAllFavourite()
+            showSnackBar()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+         inflater.inflate(R.menu.favourite_recipes_menu, menu)
+    }
+
+    private fun showSnackBar(){
+        Snackbar.make(
+            binding.root,
+            "All recipes removed",
+            Snackbar.LENGTH_SHORT
+        ).setAction("Okay"){}
+            .show()
     }
 
     private fun setupRecyclerView(recyclerView: RecyclerView) {
