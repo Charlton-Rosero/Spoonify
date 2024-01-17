@@ -16,9 +16,8 @@
     <color name="yellow">#FFC114</color>
     <color name="green">#00C980</color>
 
-    <color name="splashScreen">#14274E</color>
-
     <!-- LIGHT THEME -->
+
 
     <color name="backgroundColor">@color/lightGray</color>
     <color name="placeholderColor">@color/mediumGray</color>
@@ -46,4 +45,5 @@
     <color name="bottomNavBackground">@color/white</color>
     <color name="bottomNavItemColor">@color/darkGray</color>
     <color name="bottomNavCheckedItemColor">@color/colorPrimary</color>
+
 </resources>
