@@ -8,12 +8,30 @@ plugins {
     kotlin("kapt")
     id("kotlin-kapt")
     id("kotlin-parcelize")
+    id("androidx.room")
+}
+class RoomSchemaArgProvider(
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    val schemaDir: File
+) : CommandLineArgumentProvider {
+
+    override fun asArguments(): Iterable<String> {
+        // Note: If you're using KSP, change the line below to return
+        // listOf("room.schemaLocation=${schemaDir.path}").
+        return listOf("-Aroom.schemaLocation=${schemaDir.path}")
+    }
 }
 
 
+room {
+    schemaDirectory("$projectDir/schemas")
+}
 android {
     namespace = "com.example.spoonify"
     compileSdk = 33
+
+
 
 
     defaultConfig {
@@ -22,10 +40,20 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
         buildConfigField("string","API_KEY","")
+        javaCompileOptions {
+            annotationProcessorOptions {
+                compilerArgumentProviders(
+                    RoomSchemaArgProvider(File(projectDir, "schemas"))
+                )
+            }
+        }
+
+
+    }
+    ksp {
+        arg(RoomSchemaArgProvider(File(projectDir, "schemas")))
     }
 
     buildFeatures {

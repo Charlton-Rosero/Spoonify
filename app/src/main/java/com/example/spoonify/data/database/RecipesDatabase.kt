@@ -1,5 +1,6 @@
 package com.example.spoonify.data.database
 
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
@@ -10,7 +11,7 @@ import com.example.spoonify.data.database.entities.RecipesEntity
 @Database(
     entities = [RecipesEntity::class, FavouritesEntity::class],
     version = 1,
-    exportSchema = false
+    exportSchema = false,
 )
 @TypeConverters(RecipesTypeConverter::class)
 abstract class RecipesDatabase: RoomDatabase() {

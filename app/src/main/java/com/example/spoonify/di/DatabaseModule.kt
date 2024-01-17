@@ -26,7 +26,8 @@ object DatabaseModule {
             context,
             RecipesDatabase::class.java,
             DATABASE_NAME
-            ).build()
+            )
+        .build()
 
     @Singleton
     @Provides
