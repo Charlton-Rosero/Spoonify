@@ -18,8 +18,6 @@ import com.example.spoonify.util.Constants.Companion.RECIPE_RESULT_KEY
 
 class OverviewFragment : Fragment() {
 
-
-
     private var _binding: FragmentOverviewBinding? = null
     private val binding get() = _binding!!
 
@@ -32,6 +30,7 @@ class OverviewFragment : Fragment() {
 
         val args = arguments
         val myBundle: Result? = args!!.getParcelable(RECIPE_RESULT_KEY) as Result?
+
 
         if (myBundle != null) {
             binding.mainImageView.load(myBundle.image)
@@ -62,5 +61,4 @@ class OverviewFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }
