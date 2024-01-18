@@ -23,7 +23,7 @@
     <string name="vegetarian">Vegetarian</string>
     <string name="keto">Keto</string>
     <string name="gluten_free">Gluten Free</string>
-    <string name="pescetarian">Pescetarian</string>
+    <string name="pescetarian">Pescatarian</string>
     <string name="apply">Apply</string>
     <string name="search">Search</string>
     <string name="dairy_free">Dairy Free</string>
@@ -32,6 +32,6 @@
     <string name="save_to_favourites">Save To Favourites</string>
     <string name="no_favourites">No Favourites</string>
     <string name="delete_favourite_menu">delete_favourite_menu</string>
-    <string name="delete_all">delete all</string>
+    <string name="delete_all">Delete all</string>
     <string name="spoonify">Spoonify</string>
 </resources>
