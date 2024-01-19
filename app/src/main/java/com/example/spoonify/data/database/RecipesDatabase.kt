@@ -11,7 +11,7 @@ import com.example.spoonify.data.database.entities.RecipesEntity
 @Database(
     entities = [RecipesEntity::class, FavouritesEntity::class],
     version = 1,
-    exportSchema = false,
+    exportSchema = false
 )
 @TypeConverters(RecipesTypeConverter::class)
 abstract class RecipesDatabase: RoomDatabase() {
